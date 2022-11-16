@@ -39,5 +39,5 @@ VS Code extension, Azure CLI, Azure PowerShell, Bicep Playground
 100% supported by Microsoft Support Plans
 
 # Learn More
-## https://aka.ms/BicepDocs
-## https://github.com/Azure/bicep
+### https://aka.ms/BicepDocs
+### https://github.com/Azure/bicep
