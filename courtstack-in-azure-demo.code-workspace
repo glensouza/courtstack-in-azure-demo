@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "root"
+		},
+		{
+			"path": "CourtStack.SDK",
+			"name": "CourtStack SDK"
+		},
+		{
+			"path": "App",
+			"name": "Search App"
+		},
+		{
+			"path": "Infrastructure",
+			"name": "Cloud Infrastructure"
+		}
+	],
+	"settings": {}
+}
