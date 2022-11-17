@@ -1,4 +1,5 @@
-# Requirements to start:
+# Requirements to start
+
 * **System Requirements**
   * **Operating System**: Windows 10
   * **Browser**:
@@ -28,3 +29,4 @@
   * If you want to see the JSON response formatted in a more human readable format on the Chrome browser, you will need something like the **[JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related)** extension.
 
 | [Back to Main](../README.md) | [Next Section: Set Up Azure ==>](SetUpAzure.md) |
+|--|--|

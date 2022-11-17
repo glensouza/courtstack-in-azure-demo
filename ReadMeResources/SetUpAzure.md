@@ -1,5 +1,9 @@
 # Set Up Azure Environment
+
+## Open PowerShell
+
 ### Get your Subscription Id, set it as a variable
+
 Using Powershell, execute the following commands:
 
 ```powershell
@@ -43,6 +47,7 @@ $SUBSCRIPTION
 We will use this variable later in the demo.
 
 ### Create a Resource Group
+
 Execute the following command to set some variables we will use later:
 
 ```powershell
@@ -52,13 +57,14 @@ Set-Variable -Name "LOCATION" -Value "westus"
 
 Where **$RGNAME** is the name of the Resource Group you want to create and **$LOCATION** is the Azure region you want to use. Make sure the Resource Group name is unique across your Azure subscription.
 
-We will create a Resource Group that will serve as a base for all automation in GitHub Actions. 
+We will create a Resource Group that will serve as a base for all automation in GitHub Actions.
 
 ```powershell
 az group create -n $RGNAME --location $LOCATION
 ```
 
 ### Generate Deployment Credentials
+
 Execute the following command to create a Service Principal to the newly created Resource Group so that we can deploy resources to it:
 
 ```powershell
@@ -68,12 +74,15 @@ az ad sp create-for-rbac --name $RGNAME --role contributor --scopes /subscriptio
 This `sp.txt` file now contains your service principal credentials to login to your Azure account when running GitHub Actions. Please ensure you never share this file with anyone and don't check it in to your repository.
 
 ### Configure the GitHub secrets
+
 Now to add them as secrets within the GitHub Secrets environment variables to connect your Azure account to the GitHub repo for actions to run.
+
 * Go to your GitHub repo you created from template. Click Settings, then click Secrets.
 * Click "New Repository Secret"
 * Create secrets in the repo for:
-  * `AZURE_CREDENTIALS` is the output of `sp.txt`. Paste the entire contents of the JSON generated for the service principal in `AZURE_CREDENTIALS`.
+  * `AZURE_CREDENTIALS` is the output of `sp.txt`. _**Paste the entire contents of the JSON generated for the service principal in `AZURE_CREDENTIALS`**_.
   * `AZURE_RG` is your resource group name set in the `$RGNAME` variable.
   * `AZURE_SUBSCRIPTION` is the subscription ID in your `$SUBSCRIPTION` variable.
 
 | [<== Previous Section: Requirements](Requirements.md) | [Back to Main](../README.md) | [Next Section: Run CourtStack SDK Locally ==>](RunSDK.md) |
+|--|--|--|
