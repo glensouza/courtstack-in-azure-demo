@@ -20,12 +20,7 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2020-12-01' = {
   tags: {
   }
   properties: {
-    name: hostingPlanName
-    workerSize: workerSize
-    workerSizeId: workerSizeId
-    numberOfWorkers: numberOfWorkers
     reserved: true
-    zoneRedundant: false
   }
   sku: {
     tier: sku
