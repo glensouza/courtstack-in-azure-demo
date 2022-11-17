@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 # Copy csproj and restore
 COPY ["CourtStack.CTC.Workshop.csproj", "CourtStack.CTC.Workshop-After/"]
-RUN dotnet restore "CourtStack.CTC.Workshop.csproj"
+RUN dotnet restore "CourtStack.CTC.Workshop-After/CourtStack.CTC.Workshop.csproj"
 # Copy everything else and build
 COPY . .
 WORKDIR "/src/CourtStack.CTC.Workshop-After"
