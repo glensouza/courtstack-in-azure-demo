@@ -13,4 +13,4 @@ Extract its contents to `C:\CourtStack\CourtStack.SDK`
 
 Ensure you have dotnet 5 runtime or dotnet 5 SDK installed on your machine and execute the file: `C:\CourtStack\CourtStack.SDK\Vcms Rest Api\CourtStack.Vcms.Api.Rest.exe`
 
-| [<== Previous Section: Set Up Azure](SetUpAzure.md) | [Back to Main](README.md) | [Next Section: Containerize the CourtStack SDK ==>](ContainerizeSDK.md) |
+| [<== Previous Section: Set Up Azure](SetUpAzure.md) | [Back to Main](../README.md) | [Next Section: Containerize the CourtStack SDK ==>](ContainerizeSDK.md) |

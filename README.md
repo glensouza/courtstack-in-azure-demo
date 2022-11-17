@@ -1,31 +1,31 @@
 # Demo for [CourtStack](https://courtstack.org) Hosted in Azure
 # 1 - Requirements to start:
-Follow [this guide](Requirements.md) to satisfy the requirements to start the demo.
+Follow [this guide](ReadMeResources/Requirements.md) to satisfy the requirements to start the demo.
 
 ---
 # 2 - Set Up Azure Environment
-Follow [this guide](SetUpAzure.md) to set up your Azure environment.
+Follow [this guide](ReadMeResources/SetUpAzure.md) to set up your Azure environment.
 
 ---
 # 3 - Run [CourtStack](https://courtstack.org) SDK Locally
 
-Follow [this guide](RunSDK.md) to run the CourtStack SDK locally.
+Follow [this guide](ReadMeResources/RunSDK.md) to run the CourtStack SDK locally.
 
 ---
 # 4 - Containerize the [CourtStack](https://courtstack.org) SDK
-Follow [this guide](ContainerizeSDK.md) to containerize the CourtStack SDK.
+Follow [this guide](ReadMeResources/ContainerizeSDK.md) to containerize the CourtStack SDK.
 
 ---
 # 5 - Containerize the App that Consumes the [CourtStack](https://courtstack.org) Data
-Follow [this guide](ContainerizeApp.md) to containerize the App that Consumes the CourtStack Data.
+Follow [this guide](ReadMeResources/ContainerizeApp.md) to containerize the App that Consumes the CourtStack Data.
 
 ---
 # 6 - Deploy Infrastructure with Bicep
-Follow [this guide](DeployBicep.md) to deploy the infrastructure with Bicep.
+Follow [this guide](ReadMeResources/DeployBicep.md) to deploy the infrastructure with Bicep.
 
 ---
 # 7 - GitHub Actions
-Follow [this guide](GitHubActions.md) to set up GitHub Actions.
+Follow [this guide](ReadMeResources/GitHubActions.md) to set up GitHub Actions.
 
 ---
 # 8 - More Things That Can Be Done

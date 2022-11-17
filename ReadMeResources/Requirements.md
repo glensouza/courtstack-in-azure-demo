@@ -28,4 +28,4 @@ Follow [this guide](Requirements.md) to satisfy the requirements to start the de
   * If you want to see the raw JSON response from a CourtStack API request on the Chrome browser, you will need something like the **[ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj/related)** extension.
   * If you want to see the JSON response formatted in a more human readable format on the Chrome browser, you will need something like the **[JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related)** extension.
 
-| [Back to Main](README.md) | [Next Section: Set Up Azure ==>](SetUpAzure.md) |
+| [Back to Main](../README.md) | [Next Section: Set Up Azure ==>](SetUpAzure.md) |

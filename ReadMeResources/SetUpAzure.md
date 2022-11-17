@@ -90,4 +90,4 @@ Extract its contents to `C:\CourtStack\CourtStack.SDK`
 
 Ensure you have dotnet 5 runtime or dotnet 5 SDK installed on your machine and execute the file: `C:\CourtStack\CourtStack.SDK\Vcms Rest Api\CourtStack.Vcms.Api.Rest.exe`
 
-| [<== Previous Section: Requirements](Requirements.md) | [Back to Main](README.md) | [Next Section: Run CourtStack SDK Locally ==>](RunSDK.md) |
+| [<== Previous Section: Requirements](Requirements.md) | [Back to Main](../README.md) | [Next Section: Run CourtStack SDK Locally ==>](RunSDK.md) |

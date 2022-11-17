@@ -21,7 +21,7 @@ First class authoring experience in VS Code. Rich type-safety, intellisense and 
 ### Convert existing templates
 Easy conversion to ARM Templates to Bicep.
 
-![Bicep Language](ReadMeResources/bicep.jpg)
+![Bicep Language](bicep.jpg)
 # Why use Bicep over other tools?
 ### Day zero support for all resource types & API versions
 New resources are supported immediately
@@ -41,3 +41,5 @@ VS Code extension, Azure CLI, Azure PowerShell, Bicep Playground
 # Learn More
 ### https://aka.ms/BicepDocs
 ### https://github.com/Azure/bicep
+
+| [<== Previous Section: Requirements](Requirements.md) | [Back to Main](../README.md) |
