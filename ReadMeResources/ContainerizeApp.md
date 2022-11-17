@@ -1,5 +1,7 @@
 # Containerize the App that Consumes the CourtStack Data
 
+[![Create and publish a App Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-docker-image.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-docker-image.yml)
+
 docker file
 [DockerFile](../CourtStack.CTC.Workshop-After/Dockerfile)
 

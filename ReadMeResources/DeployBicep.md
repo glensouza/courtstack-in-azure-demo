@@ -1,5 +1,7 @@
 # Deploy Infrastructure with Bicep
 
+[![Bicep App Create Azure Resources](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-bicep.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-bicep.yml)
+
 parameters file [app.azuredeploy.paramenters.json](../Infrastructure/app.azuredeploy.parameters.json) with your values
 
 bicep file [app.bicep](../Infrastructure/app.bicep) with your values
