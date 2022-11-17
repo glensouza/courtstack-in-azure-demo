@@ -1,5 +1,4 @@
 # Requirements to start:
-Follow [this guide](Requirements.md) to satisfy the requirements to start the demo.
 * **System Requirements**
   * **Operating System**: Windows 10
   * **Browser**:
@@ -14,7 +13,7 @@ Follow [this guide](Requirements.md) to satisfy the requirements to start the de
 * Install [Docker Desktop](https://www.docker.com/products/docker-desktop)
 * Install [.NET 5 SDK or Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 * Download the [CourtStack.SDK.zip](https://github.com/CourtStack/CTC-Workshop-2021/releases/download/2021.09.11/CourtStack.SDK.zip) file
-* A little knowledge about [Bicep](bicep.md)
+* A little knowledge about [Bicep](Bicep.md)
   * Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources. It provides concise syntax, reliable type safety, and support for code reuse. I believe Bicep offers the best authoring experience for your infrastructure-as-code solutions in Azure.
 
 * A little knowledge about [GitHub Actions](https://docs.github.com/en/actions)
