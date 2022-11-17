@@ -3,7 +3,7 @@ name: App Azure ARM
 on:
   push:
     branches: ['main']
-    paths: ['CourtStack.CTC.Workshop-After', '.github/workflows/app-docker-image.yml', '.github/workflows/app-bicep.yml']
+    paths: ['Infrastructure/app.bicep', 'Infrastructure/app.azuredeploy.parameters.json', '.github/workflows/app-docker-image.yml', '.github/workflows/app-bicep.yml']
 
 jobs:
   build-and-deploy:
@@ -25,4 +25,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./Infrastructure/app.bicep
+        parameters: ./Infrastructure/app.azuredeploy.parameters.json
         failOnStdErr: false
