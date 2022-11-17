@@ -33,6 +33,11 @@
 Follow [this guide](SetUpAzure.md) to set up your Azure environment.
 
 ---
+# 3 - Run [CourtStack](https://courtstack.org) SDK Locally
+
+Follow [this guide](RunSDK.md) to run the CourtStack SDK locally.
+
+---
 # 4 - Containerize the CourtStack SDK
 Follow [this guide](ContainerizeSDK.md) to containerize the CourtStack SDK.
 
