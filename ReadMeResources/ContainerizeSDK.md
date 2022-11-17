@@ -3,7 +3,7 @@
 This document describes how to containerize the CourtStack SDK.
 
 docker file
-[DockerFile](../CourtStack.SDK/Vcms Rest Api/Dockerfile)
+[DockerFile](../CourtStack.SDK/Dockerfile)
 
 new workflow file
 [app-docker-image.yml](../.github/workflows/sdk-docker-image.yml)

@@ -3,7 +3,7 @@ name: Create and publish a App Docker image
 on:
   push:
     branches: ['main']
-    paths: ['CourtStack.CTC.Workshop-After']
+    paths: ['CourtStack.CTC.Workshop-After', '.github/workflows/app-docker-image.yml']
 
 env:
   REGISTRY: ghcr.io
