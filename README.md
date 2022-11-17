@@ -57,3 +57,15 @@ Follow [this guide](GitHubActions.md) to set up GitHub Actions.
 # 8 - More Things That Can Be Done
 * Store secrets in [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts)
 * Secure endpoints using [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory)
+* Secure and manage API endpoints with [Azure API Management](https://docs.microsoft.com/en-us/azure/api-management)
+* Manage traffic to your application using:
+  * [Azure Front Door](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview)
+  * [Azure Traffic Manager](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview)
+  * [Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/overview)
+* Improve performance of your application with [Azure CDN](https://docs.microsoft.com/en-us/azure/cdn/cdn-overview)
+* Monitor your application with:
+  * [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview)
+  * [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview)
+* Decouple your application with messaging using [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview)
+* Use [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) for serverless APIs
+* Use [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview) for application workflow
