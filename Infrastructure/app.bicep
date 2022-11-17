@@ -1,6 +1,6 @@
 // mandatory params
 @description('The unique name for the App web app, such as CourtStack.Web.')
-param appservicename string = '${resourceGroup().name}.Web'
+param appservicename string = '${resourceGroup().name}-Web'
 param location string = resourceGroup().location
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-12-01' = {
