@@ -1,7 +1,6 @@
 param name string = 'CourtStack-Web'
 param location string = 'westus'
 param hostingPlanName string = 'CourtStack-WebPlan'
-param serverFarmResourceGroup string = 'CourtStack'
 param alwaysOn bool = false
 param ftpsState string = 'AllAllowed'
 param sku string = 'Free'
@@ -27,7 +26,7 @@ resource name_resource 'Microsoft.Web/sites@2018-11-01' = {
       alwaysOn: alwaysOn
       ftpsState: ftpsState
     }
-    serverFarmId: '/subscriptions/66effa16-8b4b-4047-b8e1-d390ceddd4a5/resourcegroups/${serverFarmResourceGroup}/providers/Microsoft.Web/serverfarms/${hostingPlanName}'
+    serverFarmId: hostingPlan.id
     clientAffinityEnabled: false
     httpsOnly: true
   }
