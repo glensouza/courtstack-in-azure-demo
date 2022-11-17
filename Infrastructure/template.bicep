@@ -13,7 +13,7 @@ param linuxFxVersion string = 'DOCKER|mcr.microsoft.com/appsvc/staticsite:latest
 @secure()
 param dockerRegistryStartupCommand string
 
-resource hostingPlan 'Microsoft.Web/serverfarms@2018-11-01' = {
+resource hostingPlan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: hostingPlanName
   location: location
   kind: 'linux'
