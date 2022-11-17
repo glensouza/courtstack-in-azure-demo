@@ -1,0 +1,580 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>McMaster.NETCore.Plugins</name>
+    </assembly>
+    <members>
+        <member name="T:McMaster.NETCore.Plugins.LibraryModel.ManagedLibrary">
+            <summary>
+            Represents a managed, .NET assembly.
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.LibraryModel.ManagedLibrary.Name">
+            <summary>
+            Name of the managed library
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.LibraryModel.ManagedLibrary.AdditionalProbingPath">
+            <summary>
+            Contains path to file within an additional probing path root. This is typically a combination
+            of the NuGet package ID (lowercased), version, and path within the package.
+            <para>
+            For example, <c>microsoft.data.sqlite/1.0.0/lib/netstandard1.3/Microsoft.Data.Sqlite.dll</c>
+            </para>
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.LibraryModel.ManagedLibrary.AppLocalPath">
+            <summary>
+            Contains path to file within a deployed, framework-dependent application.
+            <para>
+            For most managed libraries, this will be the file name.
+            For example, <c>MyPlugin1.dll</c>.
+            </para>
+            <para>
+            For runtime-specific managed implementations, this may include a sub folder path.
+            For example, <c>runtimes/win/lib/netcoreapp2.0/System.Diagnostics.EventLog.dll</c>
+            </para>
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.LibraryModel.ManagedLibrary.CreateFromPackage(System.String,System.String,System.String)">
+            <summary>
+            Create an instance of <see cref="T:McMaster.NETCore.Plugins.LibraryModel.ManagedLibrary" /> from a NuGet package.
+            </summary>
+            <param name="packageId">The name of the package.</param>
+            <param name="packageVersion">The version of the package.</param>
+            <param name="assetPath">The path within the NuGet package.</param>
+            <returns></returns>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.LibraryModel.NativeLibrary">
+            <summary>
+            Represents an unmanaged library, such as `libsqlite3`, which may need to be loaded
+            for P/Invoke to work.
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.LibraryModel.NativeLibrary.Name">
+            <summary>
+            Name of the native library. This should match the name of the P/Invoke call.
+            <para>
+            For example, if specifying `[DllImport("sqlite3")]`, <see cref="P:McMaster.NETCore.Plugins.LibraryModel.NativeLibrary.Name" /> should be <c>sqlite3</c>.
+            This may not match the exact file name as loading will attempt variations on the name according
+            to OS convention. On Windows, P/Invoke will attempt to load `sqlite3.dll`. On macOS, it will
+            attempt to find `sqlite3.dylib` and `libsqlite3.dylib`. On Linux, it will attempt to find
+            `sqlite3.so` and `libsqlite3.so`.
+            </para>
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.LibraryModel.NativeLibrary.AppLocalPath">
+            <summary>
+            Contains path to file within a deployed, framework-dependent application
+            <para>
+            For example, <c>runtimes/linux-x64/native/libsqlite.so</c>
+            </para>
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.LibraryModel.NativeLibrary.AdditionalProbingPath">
+            <summary>
+            Contains path to file within an additional probing path root. This is typically a combination
+            of the NuGet package ID (lowercased), version, and path within the package.
+            <para>
+            For example, <c>sqlite/3.13.3/runtimes/linux-x64/native/libsqlite.so</c>
+            </para>
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.LibraryModel.NativeLibrary.CreateFromPackage(System.String,System.String,System.String)">
+            <summary>
+            Create an instance of <see cref="T:McMaster.NETCore.Plugins.LibraryModel.NativeLibrary" /> from a NuGet package.
+            </summary>
+            <param name="packageId">The name of the package.</param>
+            <param name="packageVersion">The version of the package.</param>
+            <param name="assetPath">The path within the NuGet package.</param>
+            <returns></returns>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder">
+            <summary>
+            A builder for creating an instance of <see cref="T:System.Runtime.Loader.AssemblyLoadContext" />.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.Build">
+            <summary>
+            Creates an assembly load context using settings specified on the builder.
+            </summary>
+            <returns>A new ManagedLoadContext.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.SetMainAssemblyPath(System.String)">
+            <summary>
+            Set the file path to the main assembly for the context. This is used as the starting point for loading
+            other assemblies. The directory that contains it is also known as the 'app local' directory.
+            </summary>
+            <param name="path">The file path. Must not be null or empty. Must be an absolute path.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.SetDefaultContext(System.Runtime.Loader.AssemblyLoadContext)">
+            <summary>
+            Replaces the default <see cref="T:System.Runtime.Loader.AssemblyLoadContext"/> used by the <see cref="T:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder"/>.
+            Use this feature if the <see cref="T:System.Runtime.Loader.AssemblyLoadContext"/> of the <see cref="T:System.Reflection.Assembly"/> is not the Runtime's default load context.
+            i.e. (AssemblyLoadContext.GetLoadContext(Assembly.GetExecutingAssembly) != <see cref="P:System.Runtime.Loader.AssemblyLoadContext.Default"/>
+            </summary>
+            <param name="context">The context to set.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.PreferLoadContextAssembly(System.Reflection.AssemblyName)">
+            <summary>
+            Instructs the load context to prefer a private version of this assembly, even if that version is
+            different from the version used by the host application.
+            Use this when you do not need to exchange types created from within the load context with other contexts
+            or the default app context.
+            <para>
+            This may mean the types loaded from
+            this assembly will not match the types from an assembly with the same name, but different version,
+            in the host application.
+            </para>
+            <para>
+            For example, if the host application has a type named <c>Foo</c> from assembly <c>Banana, Version=1.0.0.0</c>
+            and the load context prefers a private version of <c>Banan, Version=2.0.0.0</c>, when comparing two objects,
+            one created by the host (Foo1) and one created from within the load context (Foo2), they will not have the same
+            type. <c>Foo1.GetType() != Foo2.GetType()</c>
+            </para>
+            </summary>
+            <param name="assemblyName">The name of the assembly.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.PreferDefaultLoadContextAssembly(System.Reflection.AssemblyName)">
+            <summary>
+            Instructs the load context to first attempt to load assemblies by this name from the default app context, even
+            if other assemblies in this load context express a dependency on a higher or lower version.
+            Use this when you need to exchange types created from within the load context with other contexts
+            or the default app context.
+            </summary>
+            <param name="assemblyName">The name of the assembly.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.PreferDefaultLoadContext(System.Boolean)">
+            <summary>
+            Instructs the load context to first search for binaries from the default app context, even
+            if other assemblies in this load context express a dependency on a higher or lower version.
+            Use this when you need to exchange types created from within the load context with other contexts
+            or the default app context.
+            <para>
+            This may mean the types loaded from within the context are force-downgraded to the version provided
+            by the host. <seealso cref="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.PreferLoadContextAssembly(System.Reflection.AssemblyName)" /> can be used to selectively identify binaries
+            which should not be loaded from the default load context.
+            </para>
+            </summary>
+            <param name="preferDefaultLoadContext">When true, first attemp to load binaries from the default load context.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.IsLazyLoaded(System.Boolean)">
+             <summary>
+             Instructs the load context to lazy load dependencies of all shared assemblies.
+             Reduces plugin load time at the expense of non-determinism in how transitive dependencies are loaded
+             between the plugin and the host.
+            
+             Please be aware of the danger of using this option:
+             <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/pull/164#issuecomment-751557873">
+             https://github.com/natemcmaster/DotNetCorePlugins/pull/164#issuecomment-751557873
+             </seealso>
+             </summary>
+             <param name="isLazyLoaded">True to lazy load, else false.</param>
+             <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.AddManagedLibrary(McMaster.NETCore.Plugins.LibraryModel.ManagedLibrary)">
+            <summary>
+            Add a managed library to the load context.
+            </summary>
+            <param name="library">The managed library.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.AddNativeLibrary(McMaster.NETCore.Plugins.LibraryModel.NativeLibrary)">
+            <summary>
+            Add a native library to the load context.
+            </summary>
+            <param name="library"></param>
+            <returns></returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.AddProbingPath(System.String)">
+            <summary>
+            Add a <paramref name="path"/> that should be used to search for native and managed libraries.
+            </summary>
+            <param name="path">The file path. Must be a full file path.</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.AddResourceProbingPath(System.String)">
+            <summary>
+            Add a <paramref name="path"/> that should be use to search for resource assemblies (aka satellite assemblies).
+            </summary>
+            <param name="path">The file path. Must be a full file path.</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.EnableUnloading">
+            <summary>
+            Enable unloading the assembly load context.
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.PreloadAssembliesIntoMemory">
+            <summary>
+            Read .dll files into memory to avoid locking the files.
+            This is not as efficient, so is not enabled by default, but is required for scenarios
+            like hot reloading.
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.ShadowCopyNativeLibraries">
+            <summary>
+            Shadow copy native libraries (unmanaged DLLs) to avoid locking of these files.
+            This is not as efficient, so is not enabled by default, but is required for scenarios
+            like hot reloading of plugins dependent on native libraries.
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.AddResourceProbingSubpath(System.String)">
+            <summary>
+            Add a <paramref name="path"/> that should be use to search for resource assemblies (aka satellite assemblies)
+            relative to any paths specified as <see cref="M:McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder.AddProbingPath(System.String)"/>
+            </summary>
+            <param name="path">The file path. Must not be a full file path since it will be appended to additional probing path roots.</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.Loader.DependencyContextExtensions">
+            <summary>
+            Extensions for configuring a load context using .deps.json files.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.DependencyContextExtensions.TryAddDependencyContext(McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder,System.String,System.Exception@)">
+            <summary>
+            Add dependency information to a load context from a .deps.json file.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="depsFilePath">The full path to the .deps.json file.</param>
+            <param name="error">An error, if one occurs while reading .deps.json</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.DependencyContextExtensions.AddDependencyContext(McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder,System.String)">
+            <summary>
+            Add dependency information to a load context from a .deps.json file.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="depsFilePath">The full path to the .deps.json file.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.DependencyContextExtensions.AddDependencyContext(McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder,Microsoft.Extensions.DependencyModel.DependencyContext)">
+            <summary>
+            Add a pre-parsed <see cref="T:Microsoft.Extensions.DependencyModel.DependencyContext" /> to the load context.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="dependencyContext">The dependency context.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.Loader.ManagedLoadContext">
+            <summary>
+            An implementation of <see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> which attempts to load managed and native
+            binaries at runtime immitating some of the behaviors of corehost.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.ManagedLoadContext.Load(System.Reflection.AssemblyName)">
+            <summary>
+            Load an assembly.
+            </summary>
+            <param name="assemblyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.ManagedLoadContext.LoadUnmanagedDll(System.String)">
+            <summary>
+            Loads the unmanaged binary using configured list of native libraries.
+            </summary>
+            <param name="unmanagedDllName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.Loader.RuntimeConfigExtensions">
+            <summary>
+            Extensions for creating a load context using settings from a runtimeconfig.json file
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.Loader.RuntimeConfigExtensions.TryAddAdditionalProbingPathFromRuntimeConfig(McMaster.NETCore.Plugins.Loader.AssemblyLoadContextBuilder,System.String,System.Boolean,System.Exception@)">
+            <summary>
+            Adds additional probing paths to a managed load context using settings found in the runtimeconfig.json
+            and runtimeconfig.dev.json files.
+            </summary>
+            <param name="builder">The context builder</param>
+            <param name="runtimeConfigPath">The path to the runtimeconfig.json file</param>
+            <param name="includeDevConfig">Also read runtimeconfig.dev.json file, if present.</param>
+            <param name="error">The error, if one occurs while parsing runtimeconfig.json</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.PluginConfig">
+            <summary>
+            Represents the configuration for a .NET Core plugin.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginConfig.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:McMaster.NETCore.Plugins.PluginConfig" />
+            </summary>
+            <param name="mainAssemblyPath">The full file path to the main assembly for the plugin.</param>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.MainAssemblyPath">
+            <summary>
+            The file path to the main assembly.
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.PrivateAssemblies">
+            <summary>
+            A list of assemblies which should be treated as private.
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.SharedAssemblies">
+            <summary>
+            A list of assemblies which should be unified between the host and the plugin.
+            </summary>
+            <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md">
+            https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md
+            </seealso>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.PreferSharedTypes">
+            <summary>
+            Attempt to unify all types from a plugin with the host.
+            <para>
+            This does not guarantee types will unify.
+            </para>
+            <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md">
+            https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md
+            </seealso>
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.IsLazyLoaded">
+             <summary>
+             If enabled, will lazy load dependencies of all shared assemblies.
+             Reduces plugin load time at the expense of non-determinism in how transitive dependencies are loaded
+             between the plugin and the host.
+            
+             Please be aware of the danger of using this option:
+             <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/pull/164#issuecomment-751557873">
+             https://github.com/natemcmaster/DotNetCorePlugins/pull/164#issuecomment-751557873
+             </seealso>
+             </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.DefaultContext">
+            <summary>
+            If set, replaces the default <see cref="T:System.Runtime.Loader.AssemblyLoadContext"/> used by the <see cref="T:McMaster.NETCore.Plugins.PluginLoader"/>.
+            Use this feature if the <see cref="T:System.Runtime.Loader.AssemblyLoadContext"/> of the <see cref="T:System.Reflection.Assembly"/> is not the Runtime's default load context.
+            i.e. (AssemblyLoadContext.GetLoadContext(Assembly.GetExecutingAssembly) != <see cref="P:System.Runtime.Loader.AssemblyLoadContext.Default"/>
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.IsUnloadable">
+            <summary>
+            The plugin can be unloaded from memory.
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.LoadInMemory">
+            <summary>
+            Loads assemblies into memory in order to not lock files.
+            As example use case here would be: no hot reloading but able to
+            replace files and reload manually at later time
+            </summary>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.EnableHotReload">
+            <summary>
+            When any of the loaded files changes on disk, the plugin will be reloaded.
+            Use the event <see cref="E:McMaster.NETCore.Plugins.PluginLoader.Reloaded" /> to be notified of changes.
+            </summary>
+            <remarks>
+            It will load assemblies into memory in order to not lock files
+            <see cref="P:McMaster.NETCore.Plugins.PluginConfig.LoadInMemory"/>
+            </remarks>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginConfig.ReloadDelay">
+            <summary>
+            Specifies the delay to reload a plugin, after file changes have been detected.
+            Default value is 200 milliseconds.
+            </summary>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.PluginLoader">
+            <summary>
+            This loader attempts to load binaries for execution (both managed assemblies and native libraries)
+            in the same way that .NET Core would if they were originally part of the .NET Core application.
+            <para>
+            This loader reads configuration files produced by .NET Core (.deps.json and runtimeconfig.json)
+            as well as a custom file (*.config files). These files describe a list of .dlls and a set of dependencies.
+            The loader searches the plugin path, as well as any additionally specified paths, for binaries
+            which satisfy the plugin's requirements.
+            </para>
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.CreateFromAssemblyFile(System.String,System.Boolean,System.Type[])">
+            <summary>
+            Create a plugin loader for an assembly file.
+            </summary>
+            <param name="assemblyFile">The file path to the main assembly for the plugin.</param>
+            <param name="isUnloadable">Enable unloading the plugin from memory.</param>
+            <param name="sharedTypes">
+            <para>
+            A list of types which should be shared between the host and the plugin.
+            </para>
+            <para>
+            <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md">
+            https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md
+            </seealso>
+            </para>
+            </param>
+            <returns>A loader.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.CreateFromAssemblyFile(System.String,System.Boolean,System.Type[],System.Action{McMaster.NETCore.Plugins.PluginConfig})">
+            <summary>
+            Create a plugin loader for an assembly file.
+            </summary>
+            <param name="assemblyFile">The file path to the main assembly for the plugin.</param>
+            <param name="isUnloadable">Enable unloading the plugin from memory.</param>
+            <param name="sharedTypes">
+            <para>
+            A list of types which should be shared between the host and the plugin.
+            </para>
+            <para>
+            <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md">
+            https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md
+            </seealso>
+            </para>
+            </param>
+            <param name="configure">A function which can be used to configure advanced options for the plugin loader.</param>
+            <returns>A loader.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.CreateFromAssemblyFile(System.String,System.Type[])">
+            <summary>
+            Create a plugin loader for an assembly file.
+            </summary>
+            <param name="assemblyFile">The file path to the main assembly for the plugin.</param>
+            <param name="sharedTypes">
+            <para>
+            A list of types which should be shared between the host and the plugin.
+            </para>
+            <para>
+            <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md">
+            https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md
+            </seealso>
+            </para>
+            </param>
+            <returns>A loader.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.CreateFromAssemblyFile(System.String,System.Type[],System.Action{McMaster.NETCore.Plugins.PluginConfig})">
+            <summary>
+            Create a plugin loader for an assembly file.
+            </summary>
+            <param name="assemblyFile">The file path to the main assembly for the plugin.</param>
+            <param name="sharedTypes">
+            <para>
+            A list of types which should be shared between the host and the plugin.
+            </para>
+            <para>
+            <seealso href="https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md">
+            https://github.com/natemcmaster/DotNetCorePlugins/blob/main/docs/what-are-shared-types.md
+            </seealso>
+            </para>
+            </param>
+            <param name="configure">A function which can be used to configure advanced options for the plugin loader.</param>
+            <returns>A loader.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.CreateFromAssemblyFile(System.String)">
+            <summary>
+            Create a plugin loader for an assembly file.
+            </summary>
+            <param name="assemblyFile">The file path to the main assembly for the plugin.</param>
+            <returns>A loader.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.CreateFromAssemblyFile(System.String,System.Action{McMaster.NETCore.Plugins.PluginConfig})">
+            <summary>
+            Create a plugin loader for an assembly file.
+            </summary>
+            <param name="assemblyFile">The file path to the main assembly for the plugin.</param>
+            <param name="configure">A function which can be used to configure advanced options for the plugin loader.</param>
+            <returns>A loader.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.#ctor(McMaster.NETCore.Plugins.PluginConfig)">
+            <summary>
+            Initialize an instance of <see cref="T:McMaster.NETCore.Plugins.PluginLoader" />
+            </summary>
+            <param name="config">The configuration for the plugin.</param>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginLoader.IsUnloadable">
+            <summary>
+            True when this plugin is capable of being unloaded.
+            </summary>
+        </member>
+        <member name="E:McMaster.NETCore.Plugins.PluginLoader.Reloaded">
+            <summary>
+            This event is raised when the plugin has been reloaded.
+            If <see cref="P:McMaster.NETCore.Plugins.PluginConfig.EnableHotReload" /> was set to <c>true</c>,
+            the plugin will be reloaded when files on disk are changed.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.Reload">
+            <summary>
+            The unloads and reloads the plugin assemblies.
+            This method throws if <see cref="P:McMaster.NETCore.Plugins.PluginLoader.IsUnloadable" /> is <c>false</c>.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.LoadDefaultAssembly">
+            <summary>
+            Load the main assembly for the plugin.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.LoadAssembly(System.Reflection.AssemblyName)">
+            <summary>
+            Load an assembly by name.
+            </summary>
+            <param name="assemblyName">The assembly name.</param>
+            <returns>The assembly.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.LoadAssemblyFromPath(System.String)">
+            <summary>
+            Load an assembly from path.
+            </summary>
+            <param name="assemblyPath">The assembly path.</param>
+            <returns>The assembly.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.LoadAssembly(System.String)">
+            <summary>
+            Load an assembly by name.
+            </summary>
+            <param name="assemblyName">The assembly name.</param>
+            <returns>The assembly.</returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.EnterContextualReflection">
+            <summary>
+            Sets the scope used by some System.Reflection APIs which might trigger assembly loading.
+            <para>
+            See https://github.com/dotnet/coreclr/blob/v3.0.0/Documentation/design-docs/AssemblyLoadContext.ContextualReflection.md for more details.
+            </para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginLoader.Dispose">
+            <summary>
+            Disposes the plugin loader. This only does something if <see cref="P:McMaster.NETCore.Plugins.PluginLoader.IsUnloadable" /> is true.
+            When true, this will unload assemblies which which were loaded during the lifetime
+            of the plugin.
+            </summary>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.PluginReloadedEventHandler">
+            <summary>
+            Represents the method that will handle the <see cref="E:McMaster.NETCore.Plugins.PluginLoader.Reloaded" /> event.
+            </summary>
+            <param name="sender">The object sending the event</param>
+            <param name="eventArgs">Data about the event.</param>
+        </member>
+        <member name="T:McMaster.NETCore.Plugins.PluginReloadedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:McMaster.NETCore.Plugins.PluginLoader.Reloaded" /> event.
+            </summary>
+        </member>
+        <member name="M:McMaster.NETCore.Plugins.PluginReloadedEventArgs.#ctor(McMaster.NETCore.Plugins.PluginLoader)">
+            <summary>
+            Initializes <see cref="T:McMaster.NETCore.Plugins.PluginReloadedEventArgs" />.
+            </summary>
+            <param name="loader"></param>
+        </member>
+        <member name="P:McMaster.NETCore.Plugins.PluginReloadedEventArgs.Loader">
+            <summary>
+            The plugin loader
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,124 @@
+﻿@model CaseDetail
+@{
+    ViewData["Title"] = "Case Detail";
+}
+
+<h3>Details for Case Id @Model.Case.Id</h3>
+
+<br />
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Case Information</h4>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">Case Number</th>
+                    <td>@Model.Case.Number</td>
+                </tr>
+                <tr>
+                    <th scope="row">File Date</th>
+                    <td>@Model.Case.FileDate?.ToString("MMMM dd, yyyy")</td>
+                </tr>
+                <tr>
+                    <th scope="row">Title</th>
+                    <td>@Model.Case.Title</td>
+                </tr>
+                <tr>
+                    <th scope="row">Case Type</th>
+                    <td>@Model.Case.Type.Description</td>
+                </tr>
+                <tr>
+                    <th scope="row">Status</th>
+                    <td>@Model.Case.Status.Description</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Case Parties</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (CaseParty party in @Model.CaseParties)
+                {
+                    <tr>
+                        <th scope="row">@party.Id</th>
+                        <td>@party.Names[0].FirstName @party.Names[0].LastName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Case Events</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Event tmpEvent in @Model.Events)
+                {
+                    <tr>
+                        <th scope="row">@tmpEvent.Id</th>
+                        <td>@tmpEvent.Date?.ToString("MMMM dd, yyyy")</td>
+                        <td>@tmpEvent.Type.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Case Documents</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Extension</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Document document in @Model.Documents)
+                {
+                    <tr>
+                        <th scope="row">@document.Id</th>
+                        <td>@document.Type</td>
+                        <td>@document.Name</td>
+                        <td>@document.Date?.ToString("MMMM dd, yyyy")</td>
+                        <td>@document.Extension</td>
+                        <td><a class="btn btn-primary" href="/Home/OpenDocument?documentId=@document.Id">See Document >></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<div class="row">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary"><< New Search</a>
+    <form method="post" action="@Url.Action("SearchCase", "Home")" class="ml-1">
+        <input type="hidden" value="@Model.Case.Id" id="caseId" name="caseId" />
+        <button type="submit" class="btn btn-info"><< Back to Summary</button>
+    </form>
+</div>

@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CourtStack.Vcms.Plugins.Standard.Case</name>
+    </assembly>
+    <members>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository">
+            <summary>
+            Defines a repository used to interact with cases.
+            </summary>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddAdjustmentTransactionAsync(System.String,System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction)">
+            <summary>
+            Adds an adjustment transaction.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <param name="transaction">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddChargeTransactionAsync(System.String,System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction)">
+            <summary>
+            Adds a charge transaction.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <param name="transaction">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddCreditTransactionAsync(System.String,System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction)">
+            <summary>
+            Adds a credit transaction.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <param name="transaction">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddDispositionAsync(System.String,System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.Disposition)">
+            <summary>
+            Adds a charge disposition.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="chargeId">A charge identifier.</param>
+            <param name="disposition">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Disposition"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Disposition"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddDocumentLinkAsync(System.String,System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.EntityType)">
+            <summary>
+            Adds a document link.
+            </summary>
+            <param name="documentId">A document identifier.</param>
+            <param name="entityId">An entity identifier.</param>
+            <param name="entityType">An entity type.</param>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddEventAsync(System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.Event)">
+            <summary>
+            Adds a case event.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="event">An <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Event"/> object.</param>
+            <returns>An <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Event"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddPaymentPlanAsync(System.String,System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan)">
+            <summary>
+            Adds a payment plan.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <param name="paymentPlan">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.AddPleaAsync(System.String,System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.Plea)">
+            <summary>
+            Adds a charge plea.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="chargeId">A charge identifier.</param>
+            <param name="plea">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Plea"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Plea"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetCaseAsync(System.String)">
+            <summary>
+            Gets a case.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <returns>A <see cref="N:CourtStack.Vcms.Plugins.Standard.Case"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetCasesByQueryParametersAsync(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets cases that match by query parameters.
+            </summary>
+            <param name="caseNumber">A case number.</param>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>A paginated list of <see cref="N:CourtStack.Vcms.Plugins.Standard.Case"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetCaseDetailAsync(System.String)">
+            <summary>
+            Gets case details.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CaseDetail"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetCasePartiesAsync(System.String)">
+            <summary>
+            Gets case parties.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CaseParty"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetChargesAsync(System.String,System.String)">
+            <summary>
+            Gets case charges.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Charge"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetCollectionsAsync(System.String,System.String)">
+            <summary>
+            Gets case collections.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Collection"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetDispositionAsync(System.String,System.String,System.String)">
+            <summary>
+            Gets a charge disposition.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="chargeId">A charge identifier.</param>
+            <param name="dispositionId">A disposition identifier.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Disposition"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetEventAsync(System.String,System.String)">
+            <summary>
+            Gets a case event.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="eventId">An event identifier.</param>
+            <returns>An <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Event"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetEventsAsync(System.String)">
+            <summary>
+            Gets case events.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Event"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetFeesAsync(System.String,System.String)">
+            <summary>
+            Gets case fees.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Fee"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetPaymentPlanAsync(System.String,System.String,System.String)">
+            <summary>
+            Gets a payment plan.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <param name="paymentPlanId">A payment plan identifier.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetPaymentPlansAsync(System.String,System.String)">
+            <summary>
+            Gets payment plans.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetPleaAsync(System.String,System.String,System.String)">
+            <summary>
+            Gets a charge plea.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="chargeId">A charge identifier.</param>
+            <param name="pleaId">A plea identifier.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Plea"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.GetTransactionAsync(System.String,System.String,System.String)">
+            <summary>
+            Gets a financial transaction.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <param name="transactionId">A transaction identifier.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICaseRepository.RemovePaymentPlanAsync(System.String,System.String,System.String)">
+            <summary>
+            Removes a payment plan.
+            </summary>
+            <param name="caseId">A case identifier.</param>
+            <param name="partyId">A party identifier.</param>
+            <param name="paymentPlanId">A payment plan identifier.</param>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICitationRepository">
+            <summary>
+            Defines a repository used to interact with citations.
+            </summary>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.ICitationRepository.GetCitationsByQueryParametersAsync(System.String,System.Nullable{System.DateTime},System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets citations that match by query parameters.
+            </summary>
+            <param name="citationNumber">A citation number.</param>
+            <param name="dateOfBirth">A date of birth.</param>
+            <param name="driverLicense">A driver license number.</param>
+            <param name="firstName">A first name.</param>
+            <param name="lastName">A last name.</param>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Citation"/> objects.</returns>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IDocumentRepository">
+            <summary>
+            Defines a repository used to interact with documents.
+            </summary>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IDocumentRepository.AddDocumentAsync(CourtStack.Vcms.Plugins.Standard.Case.Models.Document)">
+            <summary>
+            Adds a document.
+            </summary>
+            <param name="document">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Document"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Document"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IDocumentRepository.GetDocumentAsync(System.String)">
+            <summary>
+            Gets a document.
+            </summary>
+            <param name="documentId">A document identifier.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Document"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IDocumentRepository.UpdateDocumentAsync(System.String,CourtStack.Vcms.Plugins.Standard.Case.Models.Document)">
+            <summary>
+            Update a document.
+            </summary>
+            <param name="documentId">A document identifier.</param>
+            <param name="document">A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Document"/> object.</param>
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Document"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IDocumentRepository.GetDocumentsAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets documents.
+            </summary>     
+            <param name="caseId">A case identifier.</param>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Document"/> objects.</returns>  
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IDocumentRepository.RemoveDocumentAsync(System.String)">
+            <summary>
+            Remove a document.
+            </summary>     
+            <param name="documentId">A document identifier.</param> 
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IJudicialOfficerRepository">
+            <summary>
+            Defines a repository used to interact with judicial officers.
+            </summary>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IJudicialOfficerRepository.GetJudicialOfficersByQueryParametersAsync(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets judicial officers that match by query parameters.
+            </summary>
+            <param name="firstName">A first name.</param>
+            <param name="lastName">A last name.</param>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>A paginated list of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.JudicialOfficer"/> objects.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IPartyRepository.GetPartyAsync(System.String)">
+            <summary>
+            Gets a party.
+            </summary>
+            <param name="partyId">A party identifier.</param>
+            <returns>A party</returns>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IWarrantRepository">
+            <summary>
+            Defines a repository used to interact with warramts.
+            </summary>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IWarrantRepository.GetWarrantAsync(System.String)">
+            <summary>
+            Gets a warrant.
+            </summary>
+            <param name="warrantId">A warrant identifier.</param>      
+            <returns>A <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Warrant"/> object.</returns>
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IWarrantRepository.GetWarrantsAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets warrants.
+            </summary>     
+            <param name="partyId">A party identifier.</param>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>An enumerable of <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Warrant"/> objects.</returns>  
+        </member>
+        <member name="M:CourtStack.Vcms.Plugins.Standard.Case.Interfaces.IWarrantRepository.AddWarrantAsync(CourtStack.Vcms.Plugins.Standard.Case.Models.Warrant)">
+            <summary>
+            Add a warrant.
+            </summary>     
+            <param name="partyId">A party identifier.</param>
+            <param name="warrant">An <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Warrant"/> object.</param>
+            <returns>An <see cref="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Warrant"/> object.</returns>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Address">
+            <summary>
+            An address of an individual or entity.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Calendar">
+            <summary>
+            A scheduled hearing.
+            A convenience model to support calendar-based searches.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Case">
+            <summary>
+            A case header.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CaseDetail">
+            <summary>
+            A court case.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.CaseDetail.Flags">
+            <summary>
+            An indicator to alert a clerk or judicial officer.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CaseParty">
+            <summary>
+            An individual or entity that is filing or defending against a lawsuit.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.CaseParty.Connections">
+            <summary>
+            The party's relationship to the case.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Charge">
+            <summary>
+            A formal accusation of criminal activity.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Charge.Degree">
+            <summary>
+            The severity of the charge.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Citation">
+            <summary>
+            A notice to appear in court.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CitationCharge">
+            <summary>
+            A charge associated with a citation.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Collection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CourtClerk">
+            <summary>
+            An official who handles the business of the court.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CourtReporter">
+            <summary>
+            An individual who transcribes court proceedings.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.CrossReferenceNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Disposition">
+            <summary>
+            The court's determination of a charge.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Document">
+            <summary>
+            Material filed in relation to a case.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Document.Extension">
+            <summary>
+            The file extension.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.DocumentLink">
+            <summary>
+            The relationship between a document and an entity.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.DriverLicense">
+            <summary>
+            A document permitting an individual to operate a motor vehicle.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Event">
+            <summary>
+            A record of case activity.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Event.IsDocketable">
+            <summary>
+            Indicates if the event appears on the register of actions.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Fee">
+            <summary>
+            A financial charge.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Hearing">
+            <summary>
+            A proceeding before a judicial officer.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Incident">
+            <summary>
+            A traffic incident.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Incident.IsHazardous">
+            <summary>
+            Indicates if hazardous material was being transported.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Incident.IsOwnerResponsibility">
+            <summary>
+            Indicates if the incident is the owner's responsibility rather than the driver.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Interpreter">
+            <summary>
+            An individual who interprets for those not fluent in English.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.JudicialOfficer">
+            <summary>
+            An official with the authority and responsibility to preside in a court, try lawsuits, and make legal rulings.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.LawEnforcementOfficer">
+            <summary>
+            An individual appointed to enforce the law.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.License">
+            <summary>
+            Permission to do something otherwise prohibited under law.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Name">
+            <summary>
+            A name.
+            Entities populate LastName.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Participant">
+            <summary>
+            An individual who participates in but does not have a connection to a case.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Party">
+            <summary>
+            An individual or entity.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Party.IsEntity">
+            <summary>
+            Indicates whether a party is an entity (business/organization).
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Party.Type">
+            <summary>
+            A type indicating whether the party is a person, organization, etc.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan">
+            <summary>
+            A plan to pay off fines and fees over a set period of time.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan.Date">
+            <summary>
+            The plan's start date.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.PaymentPlan.PaymentDate">
+            <summary>
+            The date the next payment is due.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Plea">
+            <summary>
+            A defendant's formal answer to criminal charges.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Resource">
+            <summary>
+            A courtroom resource.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Transaction">
+            <summary>
+            A financial transaction.
+            </summary>
+        </member>
+        <member name="P:CourtStack.Vcms.Plugins.Standard.Case.Models.Vehicle.Vin">
+            <summary>
+            The vehicle's unique identifier.
+            </summary>
+        </member>
+        <member name="T:CourtStack.Vcms.Plugins.Standard.Case.Models.Warrant">
+            <summary>
+            A document issued by a judicial officer authorizing action related to the administration of justice.
+            </summary>
+        </member>
+    </members>
+</doc>

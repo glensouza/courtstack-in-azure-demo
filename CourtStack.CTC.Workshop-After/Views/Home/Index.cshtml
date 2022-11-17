@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Search Case";
+}
+
+<h2>Search for a case:</h2>
+
+<div class="row">
+    <div class="col-3">
+        <form method="post" action="@Url.Action("SearchCase", "Home")">
+            <div class="mb-3">
+                <label for="caseId" class="form-label">Case Id:</label>
+                <input type="text" class="form-control" id="caseId" name="caseId" aria-describedby="caseIdHelp">
+                <div id="caseIdHelp" class="form-text">Type the case id.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search!</button>
+        </form>
+    </div>
+</div>

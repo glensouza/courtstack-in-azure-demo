@@ -1,0 +1,45 @@
+﻿@model CaseSummary
+@{
+    ViewData["Title"] = "Case Summary";
+}
+
+<h3>Summary for Case Id: @Model.Id</h3>
+
+<!--
+<pre>
+@CaseSummarySerialize.ToJson(@Model)
+</pre>
+-->
+
+<table class="table">
+    <tbody>
+    <tr>
+        <th scope="row">Case Number</th>
+        <td>@Model.Number</td>
+    </tr>
+    <tr>
+        <th scope="row">File Date</th>
+        <td>@Model.FileDate.ToString("MMMM dd, yyyy")</td>
+    </tr>
+    <tr>
+        <th scope="row">Title</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th scope="row">Case Type</th>
+        <td>@Model.Type.Description</td>
+    </tr>
+    <tr>
+        <th scope="row">Status</th>
+        <td>@Model.Status.Description</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary"><< New Search</a>
+    <form method="post" action="@Url.Action("CaseDetail", "Home")" class="ml-1">
+        <input type="hidden" value="@Model.Id" id="caseId" name="caseId" />
+        <button type="submit" class="btn btn-info">Details >></button>
+    </form>
+</div>
