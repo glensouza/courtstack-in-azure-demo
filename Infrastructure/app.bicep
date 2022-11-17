@@ -10,6 +10,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-12-01' = {
     capacity: 1
     tier: 'Free'
   }
+  properties: {
+    reserved: true
+  }
   kind: 'linux'
 }
 
