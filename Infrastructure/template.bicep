@@ -13,28 +13,6 @@ param linuxFxVersion string = 'DOCKER|mcr.microsoft.com/appsvc/staticsite:latest
 @secure()
 param dockerRegistryStartupCommand string
 
-resource name_resource 'Microsoft.Web/sites@2018-11-01' = {
-  name: name
-  location: location
-  tags: {
-  }
-  properties: {
-    siteConfig: {
-      appSettings: []
-      linuxFxVersion: linuxFxVersion
-      appCommandLine: dockerRegistryStartupCommand
-      alwaysOn: alwaysOn
-      ftpsState: ftpsState
-    }
-    serverFarmId: hostingPlan.id
-    clientAffinityEnabled: false
-    httpsOnly: true
-  }
-  dependsOn: [
-    hostingPlan
-  ]
-}
-
 resource hostingPlan 'Microsoft.Web/serverfarms@2018-11-01' = {
   name: hostingPlanName
   location: location
@@ -54,4 +32,23 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2018-11-01' = {
     name: skuCode
   }
   dependsOn: []
+}
+
+resource name_resource 'Microsoft.Web/sites@2018-11-01' = {
+  name: name
+  location: location
+  tags: {
+  }
+  properties: {
+    siteConfig: {
+      appSettings: []
+      linuxFxVersion: linuxFxVersion
+      appCommandLine: dockerRegistryStartupCommand
+      alwaysOn: alwaysOn
+      ftpsState: ftpsState
+    }
+    serverFarmId: hostingPlan.id
+    clientAffinityEnabled: false
+    httpsOnly: true
+  }
 }
