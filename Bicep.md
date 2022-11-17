@@ -1,7 +1,7 @@
 # What is Bicep?
 ### Bicep is a Domain Specific Language (DSL) for Azure Resource Manager (ARM) templates
-- Bicep is a declarive language to provision infrastructure on Azure that is easy to read, write, and deploy.
-- Bicep is a **strongly typed** language that **compiles** down to ARM templates and **enforces** best practices.
+* Bicep is a declarive language to provision infrastructure on Azure that is easy to read, write, and deploy.
+* Bicep is a **strongly typed** language that **compiles** down to ARM templates and **enforces** best practices.
 
 # Benefits of Azure Bicep
 Simple declarative files for creating Azure resources in a reliable, repeatable and auditable way.
