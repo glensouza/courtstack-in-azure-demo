@@ -39,38 +39,3 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-
-
-
-
-
-
-
-name: Docker Image CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build ./CourtStack.CTC.Workshop-After --file Dockerfile --tag CourtStack.CTC.Workshop:0.1
-    - name: GithubPackages-Docker
-      # You may pin to the exact commit or the version.
-      # uses: stijnvdkolk/githubpackages-docker@c64052692090e8cee503258fb0474f2fdd291926
-      uses: stijnvdkolk/githubpackages-docker@v1.0.4
-      with:
-        # Access token which is used to deploy the image to the repository. I advise to use GITHUB_TOKEN
-        repo-token: 
-        # Name for the docker image
-        image-name: CourtStack.CTC.Workshop:0.1
