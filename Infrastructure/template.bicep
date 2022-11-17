@@ -25,7 +25,7 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2020-12-01' = {
   dependsOn: []
 }
 
-resource name_resource 'Microsoft.Web/sites@2018-11-01' = {
+resource appServiceWeb 'Microsoft.Web/sites@2018-11-01' = {
   name: appServiceName
   location: location
   tags: {
