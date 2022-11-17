@@ -1,3 +1,3 @@
 # Deploy Infrastructure with Bicep
 
-| [<== Previous Section: Deploy Infrastructure with Bicep](DeployBicep.md) | [Back to Main](README.md) | [Next Section: GitHub Actions ==>](GitHubActions.md) |
+| [<== Previous Section: Containerize the App that Consumes the CourtStack Data](ContainerizeApp.md) | [Back to Main](README.md) | [Next Section: GitHub Actions ==>](GitHubActions.md) |

@@ -55,4 +55,5 @@ Follow [this guide](GitHubActions.md) to set up GitHub Actions.
 
 ---
 # 8 - More Things That Can Be Done
-- Store secrets in [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts)
+* Store secrets in [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts)
+* Secure endpoints using [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory)
