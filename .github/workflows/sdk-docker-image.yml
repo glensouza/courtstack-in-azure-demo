@@ -3,7 +3,7 @@ name: Create and publish a SDK Docker image
 on:
   push:
     branches: ['main']
-    paths: ['CourtStack.SDK']
+    paths: ['CourtStack.SDK/**']
 
 env:
   REGISTRY: ghcr.io
