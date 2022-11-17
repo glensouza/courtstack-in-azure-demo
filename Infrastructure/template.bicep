@@ -5,9 +5,6 @@ param alwaysOn bool = false
 param ftpsState string = 'AllAllowed'
 param sku string = 'Free'
 param skuCode string = 'F1'
-param workerSize string = '0'
-param workerSizeId string = '0'
-param numberOfWorkers string = '1'
 param linuxFxVersion string = 'DOCKER|mcr.microsoft.com/appsvc/staticsite:latest'
 
 @secure()
