@@ -30,7 +30,7 @@ Follow [this guide](ReadMeResources/ContainerizeApp.md) to containerize the App 
 
 ---
 
-## 6 - Deploy Infrastructure with Bicep - _**IN PROGRESS**_
+## 6 - Deploy Infrastructure with Bicep
 
 Follow [this guide](ReadMeResources/DeployBicep.md) to deploy the infrastructure with Bicep.
 
