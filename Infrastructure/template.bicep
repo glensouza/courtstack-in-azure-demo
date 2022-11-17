@@ -1,21 +1,18 @@
-param subscriptionId string
-param name string
-param location string
-param hostingPlanName string
-param serverFarmResourceGroup string
-param alwaysOn bool
-param ftpsState string
-param sku string
-param skuCode string
-param workerSize string
-param workerSizeId string
-param numberOfWorkers string
-param linuxFxVersion string
-param dockerRegistryUrl string
-param dockerRegistryUsername string
+param subscriptionId string = '66effa16-8b4b-4047-b8e1-d390ceddd4a5'
+param name string = 'CourtStack-Web'
+param location string = 'westus'
+param hostingPlanName string = 'CourtStack-WebPlan'
+param serverFarmResourceGroup string = 'CourtStack'
+param alwaysOn bool = false
+param ftpsState string = 'AllAllowed'
+param sku string = 'Free'
+param skuCode string = 'F1'
+param workerSize string = '0'
+param workerSizeId string = '0'
+param numberOfWorkers string = '1'
+param linuxFxVersion string = 'DOCKER|mcr.microsoft.com/appsvc/staticsite:latest'
 
 @secure()
-param dockerRegistryPassword string
 param dockerRegistryStartupCommand string
 
 resource name_resource 'Microsoft.Web/sites@2018-11-01' = {
