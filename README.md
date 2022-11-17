@@ -18,9 +18,9 @@ Follow [this guide](ReadMeResources/RunSDK.md) to run the CourtStack SDK locally
 
 ---
 
-## 4 - Containerize the [CourtStack](https://courtstack.org) SDK (NOT WORKING)
+## 4 - Containerize the [CourtStack](https://courtstack.org) SDK - _**(NOT WORKING)**_
 
-Follow [this guide](ReadMeResources/ContainerizeSDK.md) to containerize the CourtStack SDK (NOT WORKING).
+Follow [this guide](ReadMeResources/ContainerizeSDK.md) to containerize the CourtStack SDK - _**(NOT WORKING)**_.
 
 ---
 
@@ -30,13 +30,13 @@ Follow [this guide](ReadMeResources/ContainerizeApp.md) to containerize the App 
 
 ---
 
-## 6 - Deploy Infrastructure with Bicep
+## 6 - Deploy Infrastructure with Bicep - _**IN PROGRESS**_
 
 Follow [this guide](ReadMeResources/DeployBicep.md) to deploy the infrastructure with Bicep.
 
 ---
 
-## 7 - GitHub Actions
+## 7 - GitHub Actions - _**IN PROGRESS**_
 
 Follow [this guide](ReadMeResources/GitHubActions.md) to set up GitHub Actions.
 
