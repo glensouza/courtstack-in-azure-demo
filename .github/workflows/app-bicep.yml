@@ -8,8 +8,6 @@ on:
       - 'Infrastructure/app.azuredeploy.parameters.json'
       - '.github/workflows/app-docker-image.yml'
       - '.github/workflows/app-bicep.yml'
-      - 'Infrastructure/template.bicep'
-      - 'Infrastructure/template.json'
 
 jobs:
   build-and-deploy:
@@ -30,6 +28,6 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./Infrastructure/template.bicep
-        parameters: ./Infrastructure/template.json
+        template: ./Infrastructure/app.bicep
+        parameters: ./Infrastructure/app.azuredeploy.parameters.json
         failOnStdErr: false

@@ -2,7 +2,7 @@
 param appservicename string = '${resourceGroup().name}-Web'
 param location string = resourceGroup().location
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2018-11-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: appservicename
   location: location
   sku: {
@@ -13,7 +13,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2018-11-01' = {
   kind: 'linux'
 }
 
-resource webApp 'Microsoft.Web/sites@2018-11-01' = {
+resource webApp 'Microsoft.Web/sites@2021-03-01' = {
   name: appservicename
   location: location
   tags: {}
