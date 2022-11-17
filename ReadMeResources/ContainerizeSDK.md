@@ -1,6 +1,6 @@
-# Containerize the CourtStack SDK (NOT WORKING)
-
 [![Create and publish a SDK Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/sdk-docker-image.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/sdk-docker-image.yml)
+
+# Containerize the CourtStack SDK (NOT WORKING)
 
 This document describes how to containerize the CourtStack SDK.
 

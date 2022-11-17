@@ -1,6 +1,6 @@
-# GitHub Actions
-
 [![Deploy a App Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/deploy-app.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/deploy-app.yml)
+
+# GitHub Actions
 
 Bicep [app-bicep.yml](../.github/workflows/app-bicep.yml)
 

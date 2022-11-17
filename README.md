@@ -18,35 +18,27 @@ Follow [this guide](ReadMeResources/RunSDK.md) to run the CourtStack SDK locally
 
 ---
 
-## 4 - Containerize the [CourtStack](https://courtstack.org) SDK - _**(NOT WORKING)**_
-
-[![Create and publish a SDK Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/sdk-docker-image.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/sdk-docker-image.yml)
+## 4 - Containerize the [CourtStack](https://courtstack.org) SDK - _**(NOT WORKING)**_ [![Create and publish a SDK Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/sdk-docker-image.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/sdk-docker-image.yml)
 
 Follow [this guide](ReadMeResources/ContainerizeSDK.md) to containerize the CourtStack SDK - _**(NOT WORKING)**_.
 
 ---
 
-## 5 - Containerize the App that Consumes the [CourtStack](https://courtstack.org) Data
+## 5 - Containerize the App that Consumes the [CourtStack](https://courtstack.org) Data [![Create and publish a App Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-docker-image.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-docker-image.yml)
 
 Follow [this guide](ReadMeResources/ContainerizeApp.md) to containerize the App that Consumes the CourtStack Data.
 
-[![Create and publish a App Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-docker-image.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-docker-image.yml)
-
 ---
 
-## 6 - Deploy Infrastructure with Bicep
+## 6 - Deploy Infrastructure with Bicep [![Bicep App Create Azure Resources](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-bicep.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-bicep.yml)
 
 Follow [this guide](ReadMeResources/DeployBicep.md) to deploy the infrastructure with Bicep.
 
-[![Bicep App Create Azure Resources](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-bicep.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/app-bicep.yml)
-
 ---
 
-## 7 - GitHub Actions - _**IN PROGRESS**_
+## 7 - GitHub Actions - _**IN PROGRESS**_ [![Deploy a App Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/deploy-app.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/deploy-app.yml)
 
 Follow [this guide](ReadMeResources/GitHubActions.md) to set up GitHub Actions.
-
-[![Deploy a App Docker image](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/deploy-app.yml/badge.svg)](https://github.com/glensouza/courtstack-in-azure-demo/actions/workflows/deploy-app.yml)
 
 ---
 
