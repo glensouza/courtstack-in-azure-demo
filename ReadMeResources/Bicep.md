@@ -58,6 +58,8 @@ VS Code extension, Azure CLI, Azure PowerShell, Bicep Playground
 
 ## https://github.com/Azure/bicep
 
+### John Savill's technical training [YouTube video](https://youtu.be/_yvb6NVx61Y) about Bicep from 2021:
+
 [![Understanding and Using Project BICEP - The NEW Azure Deployment Technology with John Savill](https://img.youtube.com/vi/_yvb6NVx61Y/0.jpg)](https://youtu.be/_yvb6NVx61Y)
 
 | [<== Previous Section: Requirements](Requirements.md) | [Back to Main](../README.md) |
