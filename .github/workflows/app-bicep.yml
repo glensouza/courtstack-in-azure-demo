@@ -30,4 +30,5 @@ jobs:
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./Infrastructure/app.bicep
         parameters: ./Infrastructure/app.azuredeploy.parameters.json
+        deploymentMode: Complete
         failOnStdErr: false
